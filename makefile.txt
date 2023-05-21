@@ -8,11 +8,10 @@ build/main.o: main.cpp
 	$(CC) -c $(flags) -o build/main.o main.cpp
 	
 build/sort.o: src/sort.cpp
-	$(CC) -c $(flags) -o build/strings.o src/circle.cpp
+	$(CC) -c $(flags) -o build/sort.o src/sort.cpp
 
 build/source.o: src/source.cpp
-	$(CC) -c $(flags) -o build/errors_catch.o src/.cpp
-	
+	$(CC) -c $(flags) -o build/source.o src/source.cpp
 
 
 run:
