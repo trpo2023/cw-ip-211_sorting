@@ -13,7 +13,6 @@ build/sort.o: src/sort.cpp
 build/source.o: src/source.cpp
 	$(CC) -c $(flags) -o build/source.o src/source.cpp
 
-
 run:
 	./main
 
