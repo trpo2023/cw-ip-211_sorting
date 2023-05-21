@@ -1,31 +1,57 @@
-CC = g++
-flags = -Wall
+APP_NAME = sorting
+LIB_NAME = lib
 
-main: build/main.o build/sort.o build/source.o 
-	$(CC) $(flags) -o main.exe build/main.o build/circle.o build/errors_circle.o 
+CC = gcc
 
-build/main.o: main.cpp
-	$(CC) -c $(flags) -o build/main.o main.cpp
+CFLAGS = -Wall -Wextra
+CPPFLAGS = -I src -MP -MMD
+
+BIN_DIR = bin
+OBJ_DIR = obj
+SRC_DIR = src
+
+LDLIBS = -lm
+
+APP_PATH = $(BIN_DIR)/$(APP_NAME)
+LIB_PATH = $(OBJ_DIR)/$(SRC_DIR)/$(LIB_NAME)/$(LIB_NAME).a
+
+
+SRC_EXT = cpp
+
+APP_RUN = $(BIN_DIR)/./$(APP_NAME)
+
+APP_SOURCES = $(shell find $(SRC_DIR)/$(APP_NAME) -name '*.$(SRC_EXT)')
+APP_OBJECTS = $(APP_SOURCES:$(SRC_DIR)/%.$(SRC_EXT)=$(OBJ_DIR)/$(SRC_DIR)/%.o)
+
+LIB_SOURCES = $(shell find $(SRC_DIR)/$(LIB_NAME) -name '*.$(SRC_EXT)')
+LIB_OBJECTS = $(LIB_SOURCES:$(SRC_DIR)/%.$(SRC_EXT)=$(OBJ_DIR)/$(SRC_DIR)/%.o)
+
+DEPS = $(APP_OBJECTS:.o=.d) $(LIB_OBJECTS:.o=.d)
+
+.PHONY: all
+all: $(APP_PATH)
+
+-include $(DEPS)
+
+$(APP_PATH): $(APP_OBJECTS) $(LIB_PATH)
+	$(CC) $(CFLAGS) $(CPPFLAGS) $^ -o $@ $(LDFLAGS) $(LDLIBS)
+
+$(LIB_PATH): $(LIB_OBJECTS)
+	ar rcs $@ $^
+
+`$(OBJ_DIR)/%.o: %.c`
+
+.PHONY: clean
+clean:
+	rm -f $(APP_PATH) $(LIB_PATH) 
+	rm -rf $(DEPS) $(APP_OBJECTS) $(LIB_OBJECTS)
 	
-build/sort.o: src/sort.cpp
-	$(CC) -c $(flags) -o build/sort.o src/sort.cpp
-
-build/source.o: src/source.cpp
-
-	$(CC) -c $(flags) -o build/source.o src/source.cpp
-
-
-	$(CC) -c $(flags) -o build/errors_catch.o src/.cpp
+.PHONY: run
+run: $(APP_RUN)
+	$(APP_RUN)
 	
-
-
-	$(CC) -c $(flags) -o build/source.o src/source.cpp
-
-run:
-	./main
-
-cnr:
-	make main
-	make run
-
-
+	
+.PHONY: start
+start:
+	make clean
+	make
