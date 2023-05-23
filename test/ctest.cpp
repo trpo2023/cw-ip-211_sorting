@@ -7,7 +7,8 @@ CTEST(selection_sort, sort_array)
   int expected[] = {1, 2, 3, 4, 5};
   const int n = sizeof(arr)/sizeof(int);
   selectionSort(arr, n);
-  ASSERT_ARRAY(expected, arr, n);
+  for (int i=0; i<n;i++)
+    ASSERT_EQUAL(expected[i], arr[i]);
 }
 
 CTEST(bubble_sort, sort_array)
@@ -16,7 +17,8 @@ CTEST(bubble_sort, sort_array)
   int expected[] = {1, 2, 3, 4, 5};
   const int n = sizeof(arr)/sizeof(int);
   bubbleSort(arr, n);
-  ASSERT_ARRAY(expected, arr, n);
+   for (int i=0; i<n;i++)
+    ASSERT_EQUAL(expected[i], arr[i]);
 }
 
 CTEST(insertion_sort, sort_array)
@@ -25,7 +27,8 @@ CTEST(insertion_sort, sort_array)
   int expected[] = {1, 2, 3, 4, 5};
   const int n = sizeof(arr)/sizeof(int);
   insertionSort(arr, n);
-  ASSERT_ARRAY(expected, arr, n);
+   for (int i=0; i<n;i++)
+    ASSERT_EQUAL(expected[i], arr[i]);
 }
 
 CTEST(merge_sort, sort_array)
@@ -34,7 +37,8 @@ CTEST(merge_sort, sort_array)
   int expected[] = {1, 2, 3, 4, 5};
   const int n = sizeof(arr)/sizeof(int);
   mergeSort(arr, n);
-  ASSERT_ARRAY(expected, arr, n);
+   for (int i=0; i<n;i++)
+    ASSERT_EQUAL(expected[i], arr[i]);
 }
 
 CTEST(quick_sort, sort_array)
@@ -43,6 +47,7 @@ CTEST(quick_sort, sort_array)
   int expected[] = {1, 2, 3, 4, 5};
   const int n = sizeof(arr)/sizeof(int);
   quickSort(arr, n);
-  ASSERT_ARRAY(expected, arr, n);
+   for (int i=0; i<n;i++)
+    ASSERT_EQUAL(expected[i], arr[i]);
 }
 
