@@ -56,7 +56,7 @@ $(BIN_)/$(TEST_OUT_NAME)/$(TEST_OUT_NAME): $(TEST_OBJECTS)
 $(TEST_OBJ_DIR)/%.o: $(TEST_SRC_DIR)/%.cpp
 	$(CC) $(DEPS) -I$(THIRDPARTY_DIR) -I$(LIB_HEADERS_DIR) -L$(BIN_)/$(TARGET_OUT_NAME) -l$(TARGET_OUT_NAME) -c $< -w -o $@
 
-test: $(BIN_)/geometry-test/geometry-test
+test: $(BIN_)/sorting-test/sorting-test
 	./$<
 
 clean:
