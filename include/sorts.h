@@ -9,4 +9,5 @@ void mergeSort(int data[], int lenD);
 void quickSort(int* data, int const len);
 double timer(int tip_sort, int a[], long long n);
 
+
 #endif

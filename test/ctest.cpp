@@ -51,3 +51,55 @@ CTEST(quick_sort, sort_array)
     ASSERT_EQUAL(expected[i], arr[i]);
 }
 
+//////////////////////////////////////////////////////////////////////////////////////////////////////
+
+CTEST(timer_test, selectionSortTest)
+{
+ 
+ int a[] = { 7, 2, 9, 1, 6 };
+ long long n = 5;
+
+ double time = timer(1, a, n);
+
+ ASSERT_EQUAL(0.0, time);
+}
+
+CTEST(timer_test, bubbleSortTest)
+{
+ int a[] = { 7, 2, 9, 1, 6 };
+ long long n = 5;
+
+ double time = timer(2, a, n);
+
+ ASSERT_EQUAL(0.0, time);
+}
+
+CTEST(timer_test, insertionSortTest)
+{
+ int a[] = { 7, 2, 9, 1, 6 };
+ long long n = 5;
+
+ double time = timer(3, a, n);
+
+ ASSERT_EQUAL(0.0, time);
+}
+
+CTEST(timer_test, mergeSortTest)
+{
+ int a[] = { 7, 2, 9, 1, 6 };
+ long long n = 5;
+
+ double time = timer(4, a, n);
+
+ ASSERT_EQUAL(0.0, time);
+}
+
+CTEST(timer_test, quickSortTest)
+{
+ int a[] = { 7, 2, 9, 1, 6 };
+ long long n = 5;
+
+ double time = timer(5, a, n);
+ ASSERT_EQUAL(0.0, time);
+}
+

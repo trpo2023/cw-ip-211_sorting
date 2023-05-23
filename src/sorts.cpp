@@ -187,5 +187,8 @@ double timer(int tip_sort, int a[], long long n)
 	{
 		quickSort(a, n);
 	}
+
 	return (clock() - start) / 1000.0;
 }
+
+
